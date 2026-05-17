@@ -1,7 +1,7 @@
 # Hi there, I'm Dzamal Barambajev 👋
 ### Systems Integration & DevOps Engineer in Training | Based in Germany 🇩🇪
 
-Automating, securing, and orchestrating advanced self-hosted production systems. Expert in traffic obfuscation, secure routing topologies, and scalable monitoring infrastructure.
+Automating, securing, and orchestrating advanced self-hosted production systems. Focused on secure routing, self-hosted infrastructure, observability and resilient cloud services.
 
 ---
 
