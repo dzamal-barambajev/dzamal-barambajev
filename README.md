@@ -79,3 +79,29 @@ I design and maintain a resilient cloud ecosystem on an Ubuntu VPS, prioritizing
 * **Web Services:** Nginx (Internal Reverse Proxy), PHP, Certbot (ACME) [      ]
 * **Observability:** Prometheus, Grafana, Uptime Kuma [      ]
 * **Version Control:** Git, GitHub (GitOps token architecture) [      ]
+
+### 🖥️ Live Infrastructure Dashboards
+
+<details>
+<summary>📊 Click to expand Grafana Monitoring Dashboard</summary>
+<p align="center">
+  <br>
+<img width="1674" height="898" alt="Снимок экрана 2026-05-19 191308" src="https://github.com/user-attachments/assets/4ce4a086-9a14-440a-9772-a7cb8f6b413e" />
+
+  <br><br>
+<img width="1850" height="1067" alt="Снимок экрана 2026-05-19 200246" src="https://github.com/user-attachments/assets/247f90dc-869a-458f-bbcc-984d2105cde3" />
+
+</p>
+</details>
+
+<details>
+<summary>🔮 Click to expand Xray VPN Control Panel</summary>
+<p align="center">
+  <br>
+<img width="2184" height="1237" alt="Снимок экрана 2026-05-19 195038" src="https://github.com/user-attachments/assets/db8186eb-21ee-4f80-aea8-108064059c18" />
+
+  <br><br>
+<img width="2190" height="1246" alt="Снимок экрана 2026-05-19 194840" src="https://github.com/user-attachments/assets/86e6e13f-42dd-423a-b766-9095332e4690" />
+
+</p>
+</details>
