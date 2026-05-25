@@ -2,7 +2,16 @@
 ### Systems Integration & DevOps Engineer in Training | Based in Germany 🇩🇪
 
 Automating, securing, and orchestrating advanced self-hosted production systems. Focused on secure routing, self-hosted infrastructure, observability and resilient cloud services.
+- 🚀 **Current Learning Focus:** Deep diving into **Kubernetes (K8s)** and Cloud-Native architectures to scale containerized environments.
 
+
+![Kubernetes](https://img.shields.io/badge/Kubernetes-k3s-blue?logo=kubernetes)
+![Docker](https://img.shields.io/badge/Docker-Containers-blue?logo=docker)
+![Grafana](https://img.shields.io/badge/Grafana-Monitoring-orange?logo=grafana)
+![Prometheus](https://img.shields.io/badge/Prometheus-Metrics-orange?logo=prometheus)
+![Linux](https://img.shields.io/badge/Linux-Ubuntu-black?logo=linux)
+![Nginx](https://img.shields.io/badge/Nginx-Reverse_Proxy-green?logo=nginx)
+![Ansible](https://img.shields.io/badge/Ansible-Automation-CC0000?logo=ansible)
 ---
 
 ## 🛠️ My Production Cloud Server Architecture
