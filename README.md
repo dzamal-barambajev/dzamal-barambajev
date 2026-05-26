@@ -3,7 +3,7 @@
 
 Automatisierung, Absicherung und Orchestrierung moderner Self-Hosted-Produktionssysteme. Mein Fokus liegt auf sicherem Routing, Self-Hosted-Infrastruktur, Observability (Überwachung) und resilienten Cloud-Diensten.
 - 🚀 **Aktueller Lernfokus:** Vertiefung in **Kubernetes (K8s)** und Cloud-Native-Architekturen zur Skalierung containerisierter Umgebungen.
-
+- 🔄 **Infrastruktur-Migration:** Laufender Transfer von eigenständigen Docker-Workloads in das K3s-Cluster (Erfolgreich abgeschlossen: **Uptime Kuma** via NodePort & PVC).
 
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-k3s-blue?logo=kubernetes)
 ![Docker](https://img.shields.io/badge/Docker-Containers-blue?logo=docker)
@@ -47,9 +47,10 @@ Ich entwerfe und betreibe ein resilientes Cloud-Ökosystem auf einem Ubuntu-VPS.
  │           [ Hauptsystem-Disk ]        │                        [ 100GB Block-Storage ]                      │
  │                  (/)                  │                             (/mnt/storage)                          │
  ├───────────────────────────────────────┼─────────────────────────────────────────────────────────────────────┤
- │         [ Uptime Kuma Container ]     │           [ Prometheus ]             ──────>          [ Grafana ]   │
- │        (Echtzeit-Status/Alerts)       │         (30 Tage TSDB Retention)              (Dashboards/Metriken) │
+ │     ⎈ [ K3s Kubernetes Cluster ] ⎈   │           [ Prometheus ]             ──────>          [ Grafana ]   │
+ │       └── [ Pod: Uptime Kuma ]        │         (30 Tage TSDB Retention)              (Dashboards/Metriken) │
  └───────────────────────────────────────┴─────────────────────────────────────────────────────────────────────┘
+
                                                                 │
                                                          (Automated Cron)
                                                                 │
