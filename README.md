@@ -1,8 +1,8 @@
-# Hi there, I'm Dzamal Barambajev 👋
-### Systems Integration & DevOps Engineer in Training | Based in Germany 🇩🇪
+# Hallo, ich bin Dzamal Barambajev 👋
+### Fachinformatiker für Systemintegration & DevOps Engineer in Ausbildung | Wohnhaft in Deutschland 🇩🇪
 
-Automating, securing, and orchestrating advanced self-hosted production systems. Focused on secure routing, self-hosted infrastructure, observability and resilient cloud services.
-- 🚀 **Current Learning Focus:** Deep diving into **Kubernetes (K8s)** and Cloud-Native architectures to scale containerized environments.
+Automatisierung, Absicherung und Orchestrierung moderner Self-Hosted-Produktionssysteme. Mein Fokus liegt auf sicherem Routing, Self-Hosted-Infrastruktur, Observability (Überwachung) und resilienten Cloud-Diensten.
+- 🚀 **Aktueller Lernfokus:** Vertiefung in **Kubernetes (K8s)** und Cloud-Native-Architekturen zur Skalierung containerisierter Umgebungen.
 
 
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-k3s-blue?logo=kubernetes)
@@ -14,85 +14,86 @@ Automating, securing, and orchestrating advanced self-hosted production systems.
 ![Ansible](https://img.shields.io/badge/Ansible-Automation-CC0000?logo=ansible)
 ---
 
-## 🛠️ My Production Cloud Server Architecture
+## 🛠️ Meine Produktions-Cloud-Server-Architektur
 
-I design and maintain a resilient cloud ecosystem on an Ubuntu VPS, prioritizing traffic security, fallback routing, automation, and stateful observation.
+Ich entwerfe und betreibe ein resilientes Cloud-Ökosystem auf einem Ubuntu-VPS. Dabei setze ich klare Prioritäten auf Traffic-Sicherheit, Fallback-Routing, Automatisierung und persistente Systemüberwachung.
 
 ```text
-                                 [ Public Internet ]
-                                          │
-                                       Port 443
-                                          │
-                                          ▼
-                         [ Xray Core (VLESS + REALITY) ]
-                                          │
-                  ┌───────────────────────┴───────────────────────┐
-                  │ (Valid VPN Auth)                              │ (Non-VPN Web Traffic)
-                  ▼                                               ▼
-         [ Obfuscated VPN Tunnel ]                   [ Xray Fallback Routing ]
-         (Low-Latency Gateway)                                    │
-                                                            Internal: 8443
-                                                                  │
-                                                                  ▼
-                                                   [ Internal Nginx Web Server ]
-                                                                  │
-                                         ┌────────────────────────┴────────────────────────┐
-                                         ▼                                                 ▼
-                                  [ Production Site ]                               [ Family Web App ]
-                                   (HTML Frontend)                                   (PHP Backed Stack)
+                                 [ Öffentliches Internet ]
+                                             │
+                                          Port 443
+                                             │
+                                             ▼
+                          [ Xray Core (VLESS + REALITY) ]
+                                             │
+                  ┌──────────────────────────┴──────────────────────────┐
+                  │ (Gültige VPN-Auth)                                  │ (Normaler Web-Traffic)
+                  ▼                                                     ▼
+       [ Verschleierter VPN-Tunnel ]                         [ Xray Fallback-Routing ]
+          (Low-Latency Gateway)                                         │
+                                                                  Intern: 8443
+                                                                        │
+                                                                        ▼
+                                                          [ Interner Nginx Webserver ]
+                                                                        │
+                                         ┌──────────────────────────────┴──────────────────────────────┐
+                                         ▼                                                             ▼
+                                [ Produktions-Website ]                                      [ Familien-Web-App ]
+                                   (HTML Frontend)                                            (PHP Backend Stack)
 
- ┌─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
- │                                       Containerized Infrastructure                                      │
- ├───────────────────────────────────────┬─────────────────────────────────────────────────────────────────┤
- │          [ Main System Disk ]         │                     [ 100GB Block Storage ]                     │
- │                 (/)                   │                         (/mnt/storage)                          │
- ├───────────────────────────────────────┼─────────────────────────────────────────────────────────────────┤
- │         [ Uptime Kuma Container ]     │           [ Prometheus ]             ──────>      [ Grafana ]   │
- │         (Real-time Status/Alerts)     │         (30-day Retained TSDB)             (Dashboards/Metrics) │
- └───────────────────────────────────────┴─────────────────────────────────────────────────────────────────┘
-                                                            │
-                                                     (Automated Cron)
-                                                            │
-                                                            ▼
-                                               [ Daily Encrypted TG Backups ]
+ ┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+ │                                         Containerisierte Infrastruktur                                      │
+ ├───────────────────────────────────────┬─────────────────────────────────────────────────────────────────────┤
+ │           [ Hauptsystem-Disk ]        │                        [ 100GB Block-Storage ]                      │
+ │                  (/)                  │                             (/mnt/storage)                          │
+ ├───────────────────────────────────────┼─────────────────────────────────────────────────────────────────────┤
+ │         [ Uptime Kuma Container ]     │           [ Prometheus ]             ──────>          [ Grafana ]   │
+ │        (Echtzeit-Status/Alerts)       │         (30 Tage TSDB Retention)              (Dashboards/Metriken) │
+ └───────────────────────────────────────┴─────────────────────────────────────────────────────────────────────┘
+                                                                │
+                                                         (Automated Cron)
+                                                                │
+                                                                ▼
+                                                  [ Tägliche verschlüsselte TG-Backups ]
 ```
+
 
 ---
 
-## 🚀 Key Infrastructure Achievements
+## 🚀 Wichtigste Infrastruktur-Erfolge
 
-### 🔒 Stealth Networking & Traffic Obfuscation
-* **Advanced Xray Ingress Mesh:** Deployed an edge routing core utilizing **Xray (VLESS-Reality)** on port 443. Configured stealth handshakes that mimic legitimate web destinations, providing bulletproof traffic obfuscation.
-* **Smart Fallback Routing:** Engineered custom **Fallback pathways** inside the Xray core. Unauthenticated generic web traffic hitting port 443 is seamlessly routed downstream to an internal port (`8443`), concealing the existence of the VPN gateway.
-* **Internal Reverse Proxying:** Configured an internal **Nginx isolation layer** on port 8443 to safely multiplex and host multi-tenant platforms (Production landing pages and PHP family applications) behind the Xray perimeter.
-* **Automated SSL Management:** Created automated Certbot event lifecycle triggers (`pre_hook` / `post_hook`) to coordinate short-term Nginx releases, preserving a zero-downtime certificate renewal matrix.
+### 🔒 Stealth Networking & Traffic-Verschleierung
+* **Erweitertes Xray Ingress Mesh:** Implementierung eines Edge-Routing-Kerns mit **Xray (VLESS-Reality)** auf Port 443. Konfiguration von Stealth-Handshakes, die legitime Web-Ziele imitieren, um eine lückenlose Traffic-Verschleierung zu gewährleisten.
+* **Intelligentes Fallback-Routing:** Entwicklung maßgeschneiderter **Fallback-Pfade** innerhalb des Xray-Kerns. Nicht authentifizierter, allgemeiner Web-Traffic auf Port 443 wird nahtlos an einen internen Port (`8443`) weitergeleitet, wodurch die Existenz des VPN-Gateways vollständig verborgen bleibt.
+* **Internes Reverse-Proxying:** Konfiguration einer internen **Nginx-Isolationsschicht** auf Port 8443 zum sicheren Multiplexen und Hosten von Mandantenplattformen (Produktions-Landingpages und PHP-Familienanwendungen) hinter dem Xray-Perimeter.
+* **Automatisiertes SSL-Management:** Erstellung automatisierter Certbot-Lifecycle-Trigger (`pre_hook` / `post_hook`) zur Koordinierung kurzzeitiger Nginx-Freigaben, wodurch ein ausfallfreies Erneuerungsfenster für Zertifikate (Zero-Downtime) gewahrt bleibt.
 
-### 📊 Observability & Storage Isolation (GitOps Native)
-* **High-Capacity Storage Extension:** Partitioned, formatted, and mounted a dedicated **100 GB external Block Storage disk (`/dev/vdb1` -> `/mnt/storage`)** to prevent stateful observability logs from exhausting system storage.
-* **Containerized Telemetry Stack:** Automated the deployment of a synchronized monitoring engine using **Docker Compose**, bundling **Prometheus and Grafana** directly onto the isolated Block Storage array.
-* **Data Retention Tuning:** Enforced custom retention windows (`--storage.tsdb.retention.time=30d`) within Prometheus TSDB via Docker Bind Mounts to streamline data durability.
-* **Real-time Status Alerting:** Running a containerized **Uptime Kuma** monitoring cell on the primary root node to track site health thresholds and handle sub-second downtime telemetry.
+### 📊 Observability & Storage-Isolation (GitOps Native)
+* **Hochkapazitive Speichererweiterung:** Partitionierung, Formatierung und Einbindung eines dedizierten **externen 100 GB Block-Storage-Laufwerks (`/dev/vdb1` -> `/mnt/storage`)**, um zu verhindern, dass persistente Observability-Logs den primären System-Speicher überlasten.
+* **Containerisierter Telemetrie-Stack:** Automatisierte Bereitstellung einer synchronisierten Monitoring-Engine mittels **Docker Compose**, die **Prometheus und Grafana** direkt auf dem isolierten Block-Storage-Array bündelt.
+* **Optimierung der Datenaufbewahrung:** Durchsetzung maßgeschneiderter Aufbewahrungsfenster (`--storage.tsdb.retention.time=30d`) innerhalb der Prometheus-TSDB via Docker Bind Mounts, um die Langlebigkeit und Effizienz der Datenhaltung zu steuern.
+* **Echtzeit-Statusüberwachung:** Betrieb einer containerisierten **Uptime Kuma** Monitoring-Zelle auf dem primären Root-Knoten zur Überwachung von Website-Health-Schwellenwerten und zur Verarbeitung von Sub-Sekunden-Ausfalltelemetrie.
 
-### ⚙️ Systems Engineering & IaC Automation
-* **Multi-Node GitOps (Ansible):** Authored an environment-aware Infrastructure as Code (IaC) configuration repo. Implemented an adaptive `hosts` matrix to handle independent SSH keys (`id_ed25519_wsl`) and Python compilation routes based on the origin workstation (Debian Laptop vs. Windows/WSL2).
-* **Automated Disaster Recovery:** Programmed scheduled root-level Cron routines executing nightly database dumps, system image archiving, and encrypted sync protocols streaming backups directly to private Telegram nodes.
+### ⚙️ Systems Engineering & IaC-Automatisierung
+* **Multi-Node GitOps (Ansible):** Entwicklung eines umgebungsbewussten Infrastructure-as-Code (IaC) Repositories. Implementierung einer adaptiven `hosts`-Matrix zur Handhabung unabhängiger SSH-Schlüssel (`id_ed25519_wsl`) und Python-Kompilierungspfade, basierend auf der jeweiligen Workstation (Debian Laptop vs. Windows/WSL2).
+* **Automatisierte Disaster Recovery:** Programmierung geplanter Root-Cronjobs, die nächtliche Datenbank-Dumps, System-Image-Archivierungen und verschlüsselte Synchronisierungsprotokolle ausführen, um Backups direkt in private Telegram-Knoten zu streamen.
 
 ---
 
 ## 🧰 Tech Stack & Tools
 
-* **OS:** Linux (Ubuntu Server, Debian GNU/Linux), WSL2 (Windows Subsystem for Linux)
-* **Traffic Obfuscation:** Xray Core (VLESS, REALITY, Fallback), X-UI Framework
-* **Automation & IaC:** Ansible, Crontab (Bash scripting)
-* **Containers:** Docker, Docker Compose
-* **Web Services:** Nginx (Internal Reverse Proxy), PHP, Certbot (ACME)
+* **Betriebssysteme:** Linux (Ubuntu Server, Debian GNU/Linux), WSL2 (Windows Subsystem for Linux)
+* **Traffic-Verschleierung:** Xray Core (VLESS, REALITY, Fallback), X-UI Framework
+* **Automatisierung & IaC:** Ansible, Crontab (Bash-Scripting)
+* **Containerisierung:** Docker, Docker Compose
+* **Web-Dienste:** Nginx (Interner Reverse Proxy), PHP, Certbot (ACME)
 * **Observability:** Prometheus, Grafana, Uptime Kuma
-* **Version Control:** Git, GitHub (GitOps token architecture)
+* **Versionsverwaltung:** Git, GitHub (GitOps Token-Architektur)
 
 ### 🖥️ Live Infrastructure Dashboards
 
 <details>
-<summary>📊 Click to expand Grafana Monitoring Dashboard</summary>
+<summary>📊 Klicken zum Ausklappen: Grafana Monitoring Dashboard</summary>
 <p align="center">
   <br>
 <img width="1674" height="898" alt="Снимок экрана 2026-05-19 191308" src="https://github.com/user-attachments/assets/4ce4a086-9a14-440a-9772-a7cb8f6b413e" />
@@ -104,7 +105,7 @@ I design and maintain a resilient cloud ecosystem on an Ubuntu VPS, prioritizing
 </details>
 
 <details>
-<summary>🔮 Click to expand Xray VPN Control Panel</summary>
+<summary>🔮 Klicken zum Ausklappen: Xray VPN Control Panel</summary>
 <p align="center">
   <br>
 <img width="2184" height="1237" alt="Снимок экрана 2026-05-19 195038" src="https://github.com/user-attachments/assets/db8186eb-21ee-4f80-aea8-108064059c18" />
