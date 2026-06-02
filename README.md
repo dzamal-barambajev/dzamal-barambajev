@@ -18,45 +18,7 @@ Automatisierung, Absicherung und Orchestrierung moderner Self-Hosted-Produktions
 
 Ich entwerfe und betreibe ein resilientes Cloud-Ökosystem auf einem Ubuntu-VPS. Dabei setze ich klare Prioritäten auf Traffic-Sicherheit, Fallback-Routing, Automatisierung und persistente Systemüberwachung.
 
-```text
-                                 [ Öffentliches Internet ]
-                                             │
-                                          Port 443
-                                             │
-                                             ▼
-                          [ Xray Core (VLESS + REALITY) ]
-                                             │
-                  ┌──────────────────────────┴──────────────────────────┐
-                  │ (Gültige VPN-Auth)                                  │ (Normaler Web-Traffic)
-                  ▼                                                     ▼
-       [ Verschleierter VPN-Tunnel ]                         [ Xray Fallback-Routing ]
-          (Low-Latency Gateway)                                         │
-                                                                  Intern: 8443
-                                                                        │
-                                                                        ▼
-                                                          [ Interner Nginx Webserver ]
-                                                                        │
-                                         ┌──────────────────────────────┴──────────────────────────────┐
-                                         ▼                                                             ▼
-                                [ Produktions-Website ]                                      [ Familien-Web-App ]
-                                   (HTML Frontend)                                            (PHP Backend Stack)
-
- ┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
- │                                         Containerisierte Infrastruktur                                      │
- ├───────────────────────────────────────┬─────────────────────────────────────────────────────────────────────┤
- │           [ Hauptsystem-Disk ]        │                        [ 100GB Block-Storage ]                      │
- │                  (/)                  │                             (/mnt/storage)                          │
- ├───────────────────────────────────────┼─────────────────────────────────────────────────────────────────────┤
- │     ⎈ [ K3s Kubernetes Cluster ] ⎈   │           [ Prometheus ]             ──────>          [ Grafana ]   │
- │       └── [ Pod: Uptime Kuma ]        │         (30 Tage TSDB Retention)              (Dashboards/Metriken) │
- └───────────────────────────────────────┴─────────────────────────────────────────────────────────────────────┘
-
-                                                                │
-                                                         (Automated Cron)
-                                                                │
-                                                                ▼
-                                                  [ Tägliche verschlüsselte TG-Backups ]
-```
+![VPS Infrastruktur Architektur](vps-infrastruktur-architektur-de.png)
 
 
 ---
