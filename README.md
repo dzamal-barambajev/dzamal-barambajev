@@ -138,10 +138,9 @@ Aktuelle Entwicklungsbereiche:
 
 ## 🏗️ Architektur-Galerie
 
-### 🚀 Aktueller Plattform-Stand (11 Juni 2026)
+### 🚀 Neu Lab (12 Juni 2026)
 
 <p align="center">
-<img width="1604" height="1064" alt="2026-06-11-050714" src="https://github.com/user-attachments/assets/45be44c9-b452-49e1-8292-13c448751dc1" />
+<img width="1536" height="1024" alt="DevOps_Lab_12_06_2026_13_12_17" src="https://github.com/user-attachments/assets/c1c78e0d-4dcd-4433-9d3a-9e594bf4228d" />
 </p>
 
-*Aktueller Stand der Dzamal Cloud Platform mit Kubernetes (K3s), Monitoring, Routing und Security-Komponenten.*
