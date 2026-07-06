@@ -10,3 +10,31 @@
 *.swp
 .DS_Store
 Thumbs.db
+
+# Local/private old files
+chat.php
+clear.php
+family.html
+messages.txt
+index.html.bak
+images/
+
+# Duplicate local image
+assets/images/dzamal-profile.png
+
+# Extra screenshots not used in public portfolio
+assets/screenshots/2026-06-11-105135.png
+assets/screenshots/dbgh.png
+assets/screenshots/ghf.png
+assets/screenshots/gn.png
+assets/screenshots/hrtjn.png
+assets/screenshots/jyt.png
+assets/screenshots/kubernetes.png
+assets/screenshots/lo.png
+assets/screenshots/one.png
+assets/screenshots/rgedc.png
+assets/screenshots/rtge.png
+assets/screenshots/ryh.png
+assets/screenshots/tghr.png
+assets/screenshots/tghre.png
+assets/screenshots/thrgn.png
