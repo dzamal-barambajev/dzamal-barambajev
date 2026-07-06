@@ -1,0 +1,12 @@
+# Backup files
+*.backup*
+*.GOOD*
+*.FINAL-GOOD*
+*.tar.gz
+*.zip
+
+# Temporary files
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db

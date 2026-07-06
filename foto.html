@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foto | Dzamal-IT</title>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #eef2ff;
+            background:
+                radial-gradient(circle at 20% 15%, rgba(57,255,136,0.18), transparent 28%),
+                radial-gradient(circle at 80% 25%, rgba(55,213,255,0.14), transparent 28%),
+                linear-gradient(135deg, #090d18, #11182d 48%, #151b31);
+        }
+
+        .card {
+            width: min(900px, 92vw);
+            padding: 34px;
+            border-radius: 34px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.10);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+            backdrop-filter: blur(18px);
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            font-size: clamp(42px, 6vw, 72px);
+            line-height: 0.95;
+            color: #d9ffe9;
+            text-shadow:
+                0 0 8px rgba(57,255,136,0.65),
+                0 0 26px rgba(57,255,136,0.28);
+        }
+
+        p {
+            margin: 0 0 28px;
+            color: #aab5d6;
+            font-size: 20px;
+        }
+
+        img {
+            width: min(420px, 82vw);
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.14);
+            box-shadow:
+                0 28px 70px rgba(0,0,0,0.35),
+                0 0 42px rgba(57,255,136,0.12);
+        }
+
+        .actions {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 14px 22px;
+            border-radius: 18px;
+            text-decoration: none;
+            font-weight: 900;
+            color: #ffffff;
+            background: linear-gradient(90deg, #22d388, #37d5ff);
+            box-shadow: 0 18px 36px rgba(34,211,166,0.20);
+        }
+
+        a.secondary {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: none;
+        }
+    
+/* ===== Dzamal-IT bigger and clearer icons ===== */
+
+/* общий стиль для встроенных значков */
+.ui-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 0 0 auto !important;
+
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+
+    margin-right: 12px !important;
+    border-radius: 14px !important;
+
+    font-size: 24px !important;
+    line-height: 1 !important;
+
+    background: rgba(255,255,255,0.10) !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.06),
+        0 8px 18px rgba(0,0,0,0.12) !important;
+}
+
+/* текст рядом со значком */
+.ui-label {
+    display: inline-flex !important;
+    align-items: center !important;
+    line-height: 1.25 !important;
+}
+
+/* кнопки */
+.btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0 !important;
+}
+
+/* бейдж */
+.badge {
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+.badge .ui-icon {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    font-size: 21px !important;
+    margin-right: 10px !important;
+    border-radius: 12px !important;
+}
+
+/* маленькие инфо-плашки */
+.fact,
+.tag,
+.tag-blue,
+.tag-purple {
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+.fact .ui-icon,
+.tag .ui-icon,
+.tag-blue .ui-icon,
+.tag-purple .ui-icon {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+    font-size: 18px !important;
+    margin-right: 9px !important;
+    border-radius: 11px !important;
+}
+
+/* контактные ссылки и карточки */
+.contact-link,
+.card a,
+.contact-box a {
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+/* если где-то просто emoji в заголовках/ссылках */
+a .ui-icon,
+button .ui-icon {
+    vertical-align: middle !important;
+}
+
+/* мобильная версия */
+@media (max-width: 900px) {
+    .ui-icon {
+        width: 38px !important;
+        height: 38px !important;
+        min-width: 38px !important;
+        min-height: 38px !important;
+        font-size: 21px !important;
+        margin-right: 10px !important;
+    }
+
+    .fact .ui-icon,
+    .tag .ui-icon,
+    .tag-blue .ui-icon,
+    .tag-purple .ui-icon,
+    .badge .ui-icon {
+        width: 32px !important;
+        height: 32px !important;
+        min-width: 32px !important;
+        min-height: 32px !important;
+        font-size: 17px !important;
+    }
+}
+
+
+
+
+/* ===== Dzamal-IT terminal text mode ===== */
+
+@keyframes terminalBlink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+body.terminal-mode,
+body.terminal-mode p,
+body.terminal-mode li,
+body.terminal-mode a,
+body.terminal-mode span,
+body.terminal-mode div,
+body.terminal-mode button,
+body.terminal-mode input,
+body.terminal-mode textarea {
+    font-family: "JetBrains Mono", "Fira Code", Consolas, "Liberation Mono", monospace !important;
+}
+
+body.terminal-mode {
+    color: #dfffea !important;
+    letter-spacing: -0.02em !important;
+}
+
+/* обычный текст */
+body.terminal-mode p,
+body.terminal-mode li,
+body.terminal-mode .ui-label,
+body.terminal-mode .section-lead,
+body.terminal-mode .hero p,
+body.terminal-mode .fact,
+body.terminal-mode .tag,
+body.terminal-mode .tag-blue,
+body.terminal-mode .tag-purple,
+body.terminal-mode .badge {
+    color: #b9d8c7 !important;
+    font-size: 1.06rem !important;
+    line-height: 1.85 !important;
+}
+
+/* логотип */
+body.terminal-mode .logo {
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.06em !important;
+    text-shadow:
+        0 0 8px rgba(57,255,136,0.9),
+        0 0 18px rgba(57,255,136,0.45),
+        0 0 42px rgba(57,255,136,0.22) !important;
+}
+
+body.terminal-mode .logo::after {
+    content: " _" !important;
+    color: #39ff88 !important;
+    animation: terminalBlink 1s steps(1, end) infinite !important;
+    text-shadow:
+        0 0 8px rgba(57,255,136,0.9),
+        0 0 18px rgba(57,255,136,0.45) !important;
+}
+
+/* главное имя */
+body.terminal-mode h1 {
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.07em !important;
+    line-height: 0.95 !important;
+}
+
+/* подзаголовок */
+body.terminal-mode .hero-subtitle {
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.05em !important;
+    line-height: 1.35 !important;
+    color: #eafff2 !important;
+}
+
+body.terminal-mode .hero-subtitle::before {
+    content: "$ echo " !important;
+    color: #39ff88 !important;
+    opacity: 0.9 !important;
+}
+
+/* section titles */
+body.terminal-mode h2,
+body.terminal-mode h3,
+body.terminal-mode .section-title {
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace !important;
+    font-weight: 850 !important;
+    letter-spacing: -0.04em !important;
+    color: #ecfff4 !important;
+}
+
+body.terminal-mode .section-title::before,
+body.terminal-mode h2::before {
+    content: "$ " !important;
+    color: #39ff88 !important;
+    text-shadow:
+        0 0 8px rgba(57,255,136,0.8),
+        0 0 18px rgba(57,255,136,0.32) !important;
+}
+
+/* меню */
+body.terminal-mode nav a {
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.03em !important;
+    color: #e7fff0 !important;
+}
+
+body.terminal-mode nav a::before {
+    content: "~/";
+    color: rgba(57,255,136,0.86) !important;
+    margin-right: 4px !important;
+}
+
+body.terminal-mode nav a:hover {
+    color: #39ff88 !important;
+    text-shadow:
+        0 0 8px rgba(57,255,136,0.6),
+        0 0 18px rgba(57,255,136,0.22) !important;
+}
+
+/* кнопки */
+body.terminal-mode .btn,
+body.terminal-mode a.btn {
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em !important;
+}
+
+body.terminal-mode .btn::before,
+body.terminal-mode a.btn::before {
+    content: "▶ ";
+    color: #39ff88 !important;
+    margin-right: 4px !important;
+    text-shadow:
+        0 0 8px rgba(57,255,136,0.7),
+        0 0 18px rgba(57,255,136,0.24) !important;
+}
+
+/* tags / badges / facts слегка терминальные */
+body.terminal-mode .fact,
+body.terminal-mode .tag,
+body.terminal-mode .tag-blue,
+body.terminal-mode .tag-purple,
+body.terminal-mode .badge {
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace !important;
+    border-color: rgba(57,255,136,0.22) !important;
+}
+
+body.terminal-mode .fact::before,
+body.terminal-mode .tag::before,
+body.terminal-mode .tag-blue::before,
+body.terminal-mode .tag-purple::before {
+    content: ":: ";
+    color: rgba(57,255,136,0.85) !important;
+}
+
+/* контактные ссылки */
+body.terminal-mode .contact-link,
+body.terminal-mode .contact-box a {
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace !important;
+    color: #e8fff0 !important;
+}
+
+body.terminal-mode .contact-link:hover,
+body.terminal-mode .contact-box a:hover {
+    color: #39ff88 !important;
+}
+
+/* терминальное окно внутри hero ещё чуть выразительнее */
+body.terminal-mode .terminal,
+body.terminal-mode .screen,
+body.terminal-mode .dashboard,
+body.terminal-mode .metric {
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace !important;
+}
+
+body.terminal-mode .terminal {
+    color: #dbffe9 !important;
+}
+
+body.terminal-mode .prompt {
+    font-size: 1.04em !important;
+    font-weight: 800 !important;
+    color: #39ff88 !important;
+    text-shadow:
+        0 0 8px rgba(57,255,136,0.72),
+        0 0 18px rgba(57,255,136,0.26) !important;
+}
+
+body.terminal-mode .cmd {
+    color: #cffff0 !important;
+}
+
+body.terminal-mode .metric strong {
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace !important;
+}
+
+/* фото-страница */
+body.terminal-mode .card h1::before {
+    content: "$ whoami" !important;
+    display: block !important;
+    margin-bottom: 14px !important;
+    font-size: 0.36em !important;
+    color: #39ff88 !important;
+    letter-spacing: 0 !important;
+    text-shadow:
+        0 0 8px rgba(57,255,136,0.72),
+        0 0 18px rgba(57,255,136,0.26) !important;
+}
+
+/* на мобиле */
+@media (max-width: 900px) {
+    body.terminal-mode p,
+    body.terminal-mode li,
+    body.terminal-mode .ui-label,
+    body.terminal-mode .section-lead,
+    body.terminal-mode .hero p,
+    body.terminal-mode .fact,
+    body.terminal-mode .tag,
+    body.terminal-mode .tag-blue,
+    body.terminal-mode .tag-purple,
+    body.terminal-mode .badge {
+        font-size: 0.98rem !important;
+    }
+
+    body.terminal-mode nav a::before {
+        content: "> ";
+    }
+
+    body.terminal-mode .hero-subtitle::before {
+        content: "$ ";
+    }
+}
+
+</style>
+</head>
+
+<body>
+    <main class="card">
+        <h1>Dzamal-IT</h1>
+        <p>Fachinformatiker Systemintegration in Ausbildung</p>
+
+        <img src="/assets/images/dzamal-profile-web.jpg" alt="Dzamal Barambajev">
+
+        <div class="actions">
+            <a href="/">Zurück zur Startseite</a>
+            <a class="secondary" href="/assets/images/dzamal-profile-web.jpg" target="_blank" rel="noopener noreferrer">Foto direkt öffnen</a>
+        </div>
+    </main>
+</body>
+</html>
